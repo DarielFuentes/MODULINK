@@ -1,0 +1,914 @@
+{
+  "proyecto": "Tablero eléctrico didáctico con inmersión dieléctrica",
+  "repositorio": "",
+  "inicio": "2026-09-07",
+  "semanas": 30,
+  "vacaciones": [
+    [
+      "2026-12-17",
+      "2027-01-06"
+    ]
+  ],
+  "equipo": {
+    "D": {
+      "nombre": "Dariel (líder)",
+      "color": "#3b82f6"
+    },
+    "E": {
+      "nombre": "Emiliano",
+      "color": "#f59e0b"
+    },
+    "N": {
+      "nombre": "Daniel",
+      "color": "#10b981"
+    },
+    "G": {
+      "nombre": "Giovanni",
+      "color": "#ef4444"
+    },
+    "L": {
+      "nombre": "Lander",
+      "color": "#a855f7"
+    },
+    "S": {
+      "nombre": "Sergio",
+      "color": "#ec4899"
+    }
+  },
+  "hitos": [
+    {
+      "fecha": "2026-09-30",
+      "texto": "E1"
+    },
+    {
+      "fecha": "2026-10-04",
+      "texto": "P1"
+    },
+    {
+      "fecha": "2026-10-30",
+      "texto": "E2"
+    },
+    {
+      "fecha": "2026-11-01",
+      "texto": "P2"
+    },
+    {
+      "fecha": "2026-11-27",
+      "texto": "E3"
+    },
+    {
+      "fecha": "2026-11-29",
+      "texto": "P3"
+    },
+    {
+      "fecha": "2026-12-03",
+      "texto": "Expo"
+    },
+    {
+      "fecha": "2026-12-16",
+      "texto": "Fin"
+    }
+  ],
+  "actividades": [
+    {
+      "nombre": "Detección del problema y requerimientos",
+      "responsable": "D",
+      "descripcion": "Entender qué sobrecalentamiento se quiere demostrar y para quién es el tablero didáctico; fijar requisitos medibles (potencia, temperatura máxima, seguridad, costo tope).",
+      "entregable": "Sección de problema, requerimientos y restricciones del reporte PI (Entrega 1).",
+      "depende": "Ninguna (inicio).",
+      "consejo": "Escribe los requisitos con números (p. ej. temperatura máxima permitida); así se pueden validar al final.",
+      "subtareas": [
+        {
+          "nombre": "Análisis del problema con el cliente",
+          "inicio": "2026-09-07",
+          "fin": "2026-09-11",
+          "equipo": "DL",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Requerimientos del cliente",
+          "inicio": "2026-09-07",
+          "fin": "2026-09-18",
+          "equipo": "EG",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Restricciones (seguridad, costo, norma)",
+          "inicio": "2026-09-07",
+          "fin": "2026-09-25",
+          "equipo": "DN",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Reporte Entrega 1, ciclo 1",
+          "inicio": "2026-09-14",
+          "fin": "2026-09-25",
+          "equipo": "NS",
+          "avance": 0,
+          "urgente": false
+        }
+      ]
+    },
+    {
+      "nombre": "Estado del arte",
+      "responsable": "G",
+      "descripcion": "Investigar cómo se usa la inmersión dieléctrica en servidores y electrónica de potencia, qué fluidos existen y qué tableros didácticos o PLC similares hay.",
+      "entregable": "Estado del arte con tabla comparativa y referencias.",
+      "depende": "Requerimientos (1).",
+      "consejo": "Anota rigidez dieléctrica, conductividad térmica, punto de inflamación, costo y disponibilidad en México.",
+      "subtareas": [
+        {
+          "nombre": "Fundamentos de inmersión dieléctrica",
+          "inicio": "2026-09-14",
+          "fin": "2026-09-25",
+          "equipo": "GL",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Fluidos dieléctricos existentes",
+          "inicio": "2026-09-14",
+          "fin": "2026-10-02",
+          "equipo": "GS",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Tableros didácticos y PLC similares",
+          "inicio": "2026-09-21",
+          "fin": "2026-10-02",
+          "equipo": "EL",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Resumen y referencias",
+          "inicio": "2026-09-21",
+          "fin": "2026-10-02",
+          "equipo": "NS",
+          "avance": 0,
+          "urgente": false
+        }
+      ]
+    },
+    {
+      "nombre": "Propuestas de solución y selección",
+      "responsable": "D",
+      "descripcion": "Cada integrante propone una solución; el equipo las compara con criterios ponderados y elige una.",
+      "entregable": "Propuestas individuales y de equipo (electrónica y mecánica) y propuesta final.",
+      "depende": "Estado del arte (2).",
+      "consejo": "Usa una matriz de decisión (costo, seguridad, facilidad, disponibilidad) para justificar la elección ante los profesores.",
+      "subtareas": [
+        {
+          "nombre": "Propuestas individuales",
+          "inicio": "2026-09-21",
+          "fin": "2026-10-02",
+          "equipo": "DENGLS",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Propuesta por equipo",
+          "inicio": "2026-09-28",
+          "fin": "2026-10-02",
+          "equipo": "DENGLS",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Matriz de decisión",
+          "inicio": "2026-09-28",
+          "fin": "2026-10-09",
+          "equipo": "DG",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Propuesta final y conocimientos del equipo",
+          "inicio": "2026-10-05",
+          "fin": "2026-10-09",
+          "equipo": "DN",
+          "avance": 0,
+          "urgente": false
+        }
+      ]
+    },
+    {
+      "nombre": "Objetivo, alcance y esquema general",
+      "responsable": "D",
+      "descripcion": "Redactar objetivo general y específicos, delimitar qué entra y qué no, y dibujar el esquema general del sistema.",
+      "entregable": "Objetivo, alcance, esquema y justificación (Entrega 2, ciclo 1).",
+      "depende": "Propuesta final (3).",
+      "consejo": "Alcance realista: tablero didáctico, no sistema industrial. Lo demás va como trabajo futuro.",
+      "subtareas": [
+        {
+          "nombre": "Objetivo general y específicos",
+          "inicio": "2026-10-05",
+          "fin": "2026-10-09",
+          "equipo": "DN",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Alcance y límites",
+          "inicio": "2026-10-05",
+          "fin": "2026-10-16",
+          "equipo": "DG",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Diagrama general del sistema",
+          "inicio": "2026-10-05",
+          "fin": "2026-10-16",
+          "equipo": "DE",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Justificación",
+          "inicio": "2026-10-12",
+          "fin": "2026-10-16",
+          "equipo": "NS",
+          "avance": 0,
+          "urgente": false
+        }
+      ]
+    },
+    {
+      "nombre": "Fluido dieléctrico y análisis térmico",
+      "responsable": "G",
+      "descripcion": "Estimar cuánto calor genera el tablero (contactores, fuentes, PLC) y elegir fluido y volumen para disiparlo.",
+      "entregable": "Memoria de cálculo térmico y fluido elegido con su hoja de datos.",
+      "depende": "Esquema general (4); cargas del diseño eléctrico (6).",
+      "consejo": "Confirma la compatibilidad del fluido con aislamientos, plásticos y sellos, y su manejo seguro.",
+      "subtareas": [
+        {
+          "nombre": "Cálculo de potencia a disipar",
+          "inicio": "2026-10-12",
+          "fin": "2026-10-23",
+          "equipo": "GE",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Comparar fluidos (aceite mineral, éster, otros)",
+          "inicio": "2026-10-12",
+          "fin": "2026-10-30",
+          "equipo": "GL",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Modelo de transferencia de calor",
+          "inicio": "2026-10-19",
+          "fin": "2026-11-06",
+          "equipo": "G",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Volumen de fluido y selección final",
+          "inicio": "2026-10-26",
+          "fin": "2026-11-06",
+          "equipo": "GN",
+          "avance": 0,
+          "urgente": false
+        }
+      ]
+    },
+    {
+      "nombre": "Diseño eléctrico del tablero",
+      "responsable": "E",
+      "descripcion": "Definir las cargas de demostración (focos, motores pequeños, relevadores), las protecciones y los diagramas.",
+      "entregable": "Diagramas unifilar y de control, y lista de componentes eléctricos.",
+      "depende": "Esquema general (4).",
+      "consejo": "Usa componentes aptos para inmersión o déjalos fuera del fluido (capacitores electrolíticos, ventiladores, pantallas).",
+      "subtareas": [
+        {
+          "nombre": "Cargas y protecciones",
+          "inicio": "2026-10-12",
+          "fin": "2026-10-23",
+          "equipo": "ED",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Diagramas unifilar y de control",
+          "inicio": "2026-10-19",
+          "fin": "2026-10-30",
+          "equipo": "E",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Lista de componentes eléctricos",
+          "inicio": "2026-10-26",
+          "fin": "2026-11-06",
+          "equipo": "EL",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Revisión de seguridad eléctrica",
+          "inicio": "2026-11-02",
+          "fin": "2026-11-06",
+          "equipo": "DE",
+          "avance": 0,
+          "urgente": false
+        }
+      ]
+    },
+    {
+      "nombre": "Arquitectura de control y prototipo de PLC",
+      "responsable": "D",
+      "descripcion": "Definir qué hará el PLC en la demo, elegir el equipo y documentar entradas/salidas y conexiones.",
+      "entregable": "Lista de I/O, diagrama de flujo y diagrama de conexión del PLC.",
+      "depende": "Diseño eléctrico (6).",
+      "consejo": "El PLC puede quedar fuera del fluido si no es apto. Decide qué va sumergido antes de comprar.",
+      "subtareas": [
+        {
+          "nombre": "Definir entradas/salidas y lógica de demostración",
+          "inicio": "2026-10-19",
+          "fin": "2026-10-30",
+          "equipo": "D",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Selección del PLC y módulos",
+          "inicio": "2026-10-26",
+          "fin": "2026-11-06",
+          "equipo": "DE",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Diagrama de flujo del programa",
+          "inicio": "2026-11-02",
+          "fin": "2026-11-13",
+          "equipo": "DG",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Diagrama de conexión del PLC",
+          "inicio": "2026-11-02",
+          "fin": "2026-11-13",
+          "equipo": "DE",
+          "avance": 0,
+          "urgente": false
+        }
+      ]
+    },
+    {
+      "nombre": "Diseño mecánico del tanque de inmersión",
+      "responsable": "N",
+      "descripcion": "Diseñar el recipiente donde se sumerge el tablero: dimensiones, material, tapa, sellado, pasacables y soportes.",
+      "entregable": "Modelo CAD y planos de fabricación.",
+      "depende": "Volumen de fluido (5); dimensiones de componentes (6).",
+      "consejo": "Prevé dilatación del fluido, drenaje y una ventana transparente para observar la demo.",
+      "subtareas": [
+        {
+          "nombre": "Dimensionamiento del tanque",
+          "inicio": "2026-10-19",
+          "fin": "2026-10-30",
+          "equipo": "NG",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Modelado CAD",
+          "inicio": "2026-10-26",
+          "fin": "2026-11-13",
+          "equipo": "N",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Montaje del tablero en el tanque y sellado",
+          "inicio": "2026-11-02",
+          "fin": "2026-11-13",
+          "equipo": "NE",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Planos de fabricación",
+          "inicio": "2026-11-02",
+          "fin": "2026-11-13",
+          "equipo": "NS",
+          "avance": 0,
+          "urgente": false
+        }
+      ]
+    },
+    {
+      "nombre": "Lista de materiales, cotización y costeo",
+      "responsable": "E",
+      "descripcion": "Convertir los diseños en lista de compra y de fabricación, cotizar y calcular el costo total.",
+      "entregable": "Lista de elementos, cotizaciones y costeo (Entrega 2).",
+      "depende": "Diseños eléctrico y mecánico (6, 8).",
+      "consejo": "Cotiza con al menos 2 proveedores y deja 10 a 15 % de reserva para imprevistos.",
+      "subtareas": [
+        {
+          "nombre": "Elementos a adquirir",
+          "inicio": "2026-10-12",
+          "fin": "2026-10-23",
+          "equipo": "ES",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Elementos a fabricar",
+          "inicio": "2026-10-12",
+          "fin": "2026-10-23",
+          "equipo": "NS",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Cotizaciones (mínimo 2 proveedores)",
+          "inicio": "2026-10-19",
+          "fin": "2026-10-30",
+          "equipo": "LS",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Costeo de materiales y fabricación",
+          "inicio": "2026-10-26",
+          "fin": "2026-10-30",
+          "equipo": "NG",
+          "avance": 0,
+          "urgente": false
+        }
+      ]
+    },
+    {
+      "nombre": "Gestión del proyecto y avances de PI",
+      "responsable": "D",
+      "descripcion": "Mantener el plan, los reportes de cada parcial y el seguimiento semanal del equipo.",
+      "entregable": "Gantt actualizado, avances en Classroom (1 y 29 nov) y bitácora.",
+      "depende": "Continua.",
+      "consejo": "Reunión corta semanal: qué se hizo, qué sigue y qué bloquea. Actualiza el Gantt cada vez.",
+      "subtareas": [
+        {
+          "nombre": "Gantt y reparto de roles",
+          "inicio": "2026-10-05",
+          "fin": "2026-10-23",
+          "equipo": "DN",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Avance PI 2.º parcial (1 nov)",
+          "inicio": "2026-10-26",
+          "fin": "2026-11-06",
+          "equipo": "NS",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Avance PI 3.er parcial (29 nov)",
+          "inicio": "2026-11-23",
+          "fin": "2026-12-04",
+          "equipo": "NS",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Bitácora semanal y reuniones de equipo",
+          "inicio": "2026-10-05",
+          "fin": "2027-04-02",
+          "equipo": "DS",
+          "avance": 0,
+          "urgente": false
+        }
+      ]
+    },
+    {
+      "nombre": "Adquisición de materiales",
+      "responsable": "L",
+      "descripcion": "Comprar lo aprobado y llevar el inventario de lo que llega.",
+      "entregable": "Materiales recibidos e inventario.",
+      "depende": "Costeo (9).",
+      "consejo": "Compra primero lo de entrega larga (fluido, PLC, tanque).",
+      "subtareas": [
+        {
+          "nombre": "Aprobar presupuesto y compras",
+          "inicio": "2026-10-26",
+          "fin": "2026-10-30",
+          "equipo": "DL",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Compra eléctrica y PLC",
+          "inicio": "2026-10-26",
+          "fin": "2026-11-13",
+          "equipo": "ES",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Compra de fluido, tanque y material mecánico",
+          "inicio": "2026-11-02",
+          "fin": "2026-11-20",
+          "equipo": "LN",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Recepción e inventario",
+          "inicio": "2026-11-09",
+          "fin": "2026-11-20",
+          "equipo": "SL",
+          "avance": 0,
+          "urgente": false
+        }
+      ]
+    },
+    {
+      "nombre": "Prototipo versión 0 (medidas reales)",
+      "responsable": "N",
+      "descripcion": "Armar un modelo a medidas reales con todos los componentes mecánicos y electrónicos representados.",
+      "entregable": "Prototipo v0 (Entrega 3, ciclo 1, 27 nov).",
+      "depende": "Compras iniciadas (11).",
+      "consejo": "Puede ser de cartón o MDF para validar espacios antes de cortar el material final.",
+      "subtareas": [
+        {
+          "nombre": "Maqueta a escala real",
+          "inicio": "2026-11-09",
+          "fin": "2026-11-20",
+          "equipo": "N",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Distribución de componentes",
+          "inicio": "2026-11-09",
+          "fin": "2026-11-20",
+          "equipo": "EN",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Verificar medidas y holguras",
+          "inicio": "2026-11-16",
+          "fin": "2026-11-27",
+          "equipo": "NG",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Entrega 3, ciclo 1 (27 nov)",
+          "inicio": "2026-11-23",
+          "fin": "2026-11-27",
+          "equipo": "DN",
+          "avance": 0,
+          "urgente": false
+        }
+      ]
+    },
+    {
+      "nombre": "Fabricación mecánica",
+      "responsable": "N",
+      "descripcion": "Construir recipiente, estructura y soportes, y probar que no haya fugas.",
+      "entregable": "Tanque y estructura terminados con prueba de fugas aprobada.",
+      "depende": "Prototipo v0 (12).",
+      "consejo": "Prueba con agua al menos 24 h antes de usar el fluido dieléctrico.",
+      "subtareas": [
+        {
+          "nombre": "Corte y maquinado de estructura",
+          "inicio": "2026-11-16",
+          "fin": "2026-12-04",
+          "equipo": "NL",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Tanque, soportes y pasacables",
+          "inicio": "2026-11-23",
+          "fin": "2026-12-11",
+          "equipo": "NS",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Sellado y prueba de fugas con agua",
+          "inicio": "2026-12-07",
+          "fin": "2026-12-18",
+          "equipo": "NL",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Acabados y etiquetado",
+          "inicio": "2026-12-07",
+          "fin": "2026-12-18",
+          "equipo": "S",
+          "avance": 0,
+          "urgente": false
+        }
+      ]
+    },
+    {
+      "nombre": "Ensamble y cableado eléctrico",
+      "responsable": "E",
+      "descripcion": "Montar protecciones y cablear potencia y control.",
+      "entregable": "Tablero ensamblado y verificado.",
+      "depende": "Compras eléctricas (11).",
+      "consejo": "Etiqueta los cables. Haz pruebas de continuidad y aislamiento antes de energizar.",
+      "subtareas": [
+        {
+          "nombre": "Montaje de riel DIN y protecciones",
+          "inicio": "2026-11-16",
+          "fin": "2026-11-27",
+          "equipo": "ES",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Cableado de potencia",
+          "inicio": "2026-11-23",
+          "fin": "2026-12-11",
+          "equipo": "E",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Cableado de control y señalización",
+          "inicio": "2026-11-30",
+          "fin": "2026-12-11",
+          "equipo": "EL",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Pruebas de continuidad y aislamiento",
+          "inicio": "2026-12-07",
+          "fin": "2026-12-18",
+          "equipo": "ED",
+          "avance": 0,
+          "urgente": false
+        }
+      ]
+    },
+    {
+      "nombre": "Programación del PLC",
+      "responsable": "D",
+      "descripcion": "Programar la lógica de la demo y las seguridades.",
+      "entregable": "Programa del PLC con diagrama de flujo y pruebas preliminares.",
+      "depende": "Diagrama de flujo e I/O (7).",
+      "consejo": "Prueba primero con cargas simuladas (LED) antes de conectar cargas reales.",
+      "subtareas": [
+        {
+          "nombre": "Lógica base (arranque, paro, enclavamiento)",
+          "inicio": "2026-11-09",
+          "fin": "2026-11-27",
+          "equipo": "D",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Pruebas preliminares (Entrega 3)",
+          "inicio": "2026-11-23",
+          "fin": "2026-12-04",
+          "equipo": "DL",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Alarmas y paro de emergencia",
+          "inicio": "2026-11-30",
+          "fin": "2026-12-18",
+          "equipo": "DG",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Señalización o HMI sencilla",
+          "inicio": "2026-12-07",
+          "fin": "2026-12-18",
+          "equipo": "DL",
+          "avance": 0,
+          "urgente": false
+        }
+      ]
+    },
+    {
+      "nombre": "Instrumentación térmica",
+      "responsable": "G",
+      "descripcion": "Medir temperatura del tablero y del fluido con sensores conectados al PLC.",
+      "entregable": "Lectura de temperatura en el programa y registro de datos.",
+      "depende": "Programación base (15).",
+      "consejo": "Registra también temperatura ambiente y hora para comparar con y sin inmersión.",
+      "subtareas": [
+        {
+          "nombre": "Selección de sensores de temperatura",
+          "inicio": "2026-11-23",
+          "fin": "2026-11-27",
+          "equipo": "GE",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Cableado de sensores al PLC",
+          "inicio": "2026-11-30",
+          "fin": "2026-12-11",
+          "equipo": "ES",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Escalamiento y lectura en programa",
+          "inicio": "2026-11-30",
+          "fin": "2026-12-18",
+          "equipo": "DG",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Registro de datos de temperatura",
+          "inicio": "2026-12-07",
+          "fin": "2026-12-18",
+          "equipo": "GS",
+          "avance": 0,
+          "urgente": false
+        }
+      ]
+    },
+    {
+      "nombre": "Expomecatrónica (3 dic)",
+      "responsable": "N",
+      "descripcion": "Preparar cartel, demo funcional y exposición de avances.",
+      "entregable": "Presentación en Expomecatrónica (3 dic).",
+      "depende": "Prototipo y tablero parcialmente funcional.",
+      "consejo": "Si la inmersión aún no está lista, muestra demo sin fluido, el Gantt y los cálculos.",
+      "subtareas": [
+        {
+          "nombre": "Cartel y presentación",
+          "inicio": "2026-11-23",
+          "fin": "2026-12-04",
+          "equipo": "NS",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Demo funcional sin inmersión",
+          "inicio": "2026-11-23",
+          "fin": "2026-12-04",
+          "equipo": "DE",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Guion y ensayo",
+          "inicio": "2026-11-30",
+          "fin": "2026-12-04",
+          "equipo": "GL",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Presentación de avances",
+          "inicio": "2026-11-30",
+          "fin": "2026-12-04",
+          "equipo": "DENGLS",
+          "avance": 0,
+          "urgente": false
+        }
+      ]
+    },
+    {
+      "nombre": "Integración e inmersión del sistema",
+      "responsable": "D",
+      "descripcion": "Tras las vacaciones: unir tablero, sensores y tanque, llenar con fluido y ajustar la lógica.",
+      "entregable": "Sistema completo operando en inmersión.",
+      "depende": "Ensamble, fabricación, programación y sensores (13 a 16).",
+      "consejo": "Protocolo de llenado: tablero desenergizado, guantes, gafas y charola para derrames.",
+      "subtareas": [
+        {
+          "nombre": "Revisión de estado y plan de enero",
+          "inicio": "2027-01-04",
+          "fin": "2027-01-08",
+          "equipo": "DG",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Integrar sensores y tablero al tanque",
+          "inicio": "2027-01-04",
+          "fin": "2027-01-22",
+          "equipo": "EN",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Llenado con fluido (protocolo seguro)",
+          "inicio": "2027-01-18",
+          "fin": "2027-01-29",
+          "equipo": "DNL",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Ajuste de lógica con fluido",
+          "inicio": "2027-01-25",
+          "fin": "2027-02-05",
+          "equipo": "DG",
+          "avance": 0,
+          "urgente": false
+        }
+      ]
+    },
+    {
+      "nombre": "Pruebas y validación",
+      "responsable": "G",
+      "descripcion": "Comparar el comportamiento térmico con y sin inmersión y validar el aislamiento eléctrico.",
+      "entregable": "Tablas, gráficas de temperatura y lista de correcciones.",
+      "depende": "Sistema integrado (18).",
+      "consejo": "Mismo ciclo de carga y misma duración en ambas pruebas para que la comparación sea válida.",
+      "subtareas": [
+        {
+          "nombre": "Pruebas eléctricas de aislamiento",
+          "inicio": "2027-01-25",
+          "fin": "2027-02-05",
+          "equipo": "EL",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Pruebas térmicas con y sin inmersión",
+          "inicio": "2027-02-01",
+          "fin": "2027-02-26",
+          "equipo": "GL",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Análisis y comparación de datos",
+          "inicio": "2027-02-15",
+          "fin": "2027-03-05",
+          "equipo": "GS",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Correcciones y mejoras",
+          "inicio": "2027-02-22",
+          "fin": "2027-03-05",
+          "equipo": "DEN",
+          "avance": 0,
+          "urgente": false
+        }
+      ]
+    },
+    {
+      "nombre": "Documentación final y cierre",
+      "responsable": "N",
+      "descripcion": "Cerrar el proyecto con manual, reporte final, video y entrega.",
+      "entregable": "Manual de operación, reporte técnico, video y presentación final.",
+      "depende": "Resultados de pruebas (19).",
+      "consejo": "Empieza el manual en febrero con lo ya probado; no lo dejes para el final.",
+      "subtareas": [
+        {
+          "nombre": "Manual de operación y seguridad",
+          "inicio": "2027-02-22",
+          "fin": "2027-03-19",
+          "equipo": "NS",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Reporte técnico final",
+          "inicio": "2027-03-01",
+          "fin": "2027-03-26",
+          "equipo": "NG",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Video de demostración",
+          "inicio": "2027-03-08",
+          "fin": "2027-03-26",
+          "equipo": "LS",
+          "avance": 0,
+          "urgente": false
+        },
+        {
+          "nombre": "Presentación y entrega final",
+          "inicio": "2027-03-22",
+          "fin": "2027-04-02",
+          "equipo": "DENGLS",
+          "avance": 0,
+          "urgente": false
+        }
+      ]
+    }
+  ]
+}

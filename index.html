@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gantt del proyecto</title>
+<style>
+:root{--bg:#f6f7f5;--fg:#1c2421;--mut:#68736e;--line:#dde2de;--card:#fff;--bar:#2b3a35;--vac:#e8e2d0;--today:#d6336c;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141a18;--fg:#e7ece9;--mut:#8f9b95;--line:#2a3430;--card:#1b2320;--bar:#9fb5ac;--vac:#2c2a20}}
+:root[data-theme="dark"]{--bg:#141a18;--fg:#e7ece9;--mut:#8f9b95;--line:#2a3430;--card:#1b2320;--bar:#9fb5ac;--vac:#2c2a20}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.4 "Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+header{padding:20px 16px 8px;max-width:1300px;margin:auto}
+h1{font:700 22px/1.2 Georgia,"Times New Roman",serif;margin:0 0 4px}
+p.s{margin:0;color:var(--mut)}
+.bar{display:flex;flex-wrap:wrap;gap:8px;padding:10px 16px;max-width:1300px;margin:auto;align-items:center}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:20px;padding:5px 11px;cursor:pointer;font:inherit;display:flex;gap:6px;align-items:center}
+.chip i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.chip.on{outline:2px solid var(--fg)}
+.chip:focus-visible,button:focus-visible{outline:2px solid var(--today)}
+.wrap{max-width:1300px;margin:0 auto 24px;overflow-x:auto;border:1px solid var(--line);background:var(--card);border-radius:6px}
+.g{min-width:max-content}
+.r{display:flex;border-bottom:1px solid var(--line);height:30px;transition:opacity .15s}
+.r.p{background:color-mix(in srgb,var(--line) 35%,transparent);font-weight:600;cursor:pointer}
+.r.h{height:26px;position:sticky;top:0;z-index:3;background:var(--card)}
+.n{position:sticky;left:0;z-index:2;width:290px;flex:none;padding:5px 8px;background:var(--card);border-right:1px solid var(--line);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.p .n{background:color-mix(in srgb,var(--line) 60%,var(--card))}
+.s2 .n{padding-left:28px;font-weight:400;color:var(--mut)}
+.o{width:84px;flex:none;display:flex;align-items:center;gap:2px;padding:0 6px;border-right:1px solid var(--line);background:var(--card)}
+.o b{width:15px;height:15px;border-radius:50%;font:700 9px/15px sans-serif;color:#fff;text-align:center}
+.t{position:relative;flex:none;width:900px;background:repeating-linear-gradient(90deg,transparent 0 29px,var(--line) 29px 30px)}
+.bb{overflow:hidden;position:absolute;top:7px;height:16px;border-radius:4px}
+.bb u{position:absolute;right:0;top:0;bottom:0;background:var(--card);opacity:.62}.p .bb{background:var(--bar);top:9px;height:12px;border-radius:2px}
+.v{position:absolute;top:0;bottom:0;background:var(--vac);opacity:.7}
+.td{position:absolute;top:0;bottom:0;width:2px;background:var(--today);z-index:1}
+.m{position:absolute;font-size:10px;color:var(--mut);top:2px;white-space:nowrap;transform:translateX(-50%)}
+.m.lo{top:13px}
+.d{position:absolute;top:10px;width:8px;height:8px;background:var(--today);transform:translateX(-50%) rotate(45deg)}
+.mo{position:absolute;top:0;height:26px;border-left:1px solid var(--line);padding:4px 4px;font-size:11px;font-weight:600}
+.wk{position:absolute;top:13px;font-size:9px;color:var(--mut);width:30px;text-align:center}
+.dt{position:sticky;left:0;width:min(calc(100vw - 34px),780px);padding:10px 14px 12px 28px;border-bottom:1px solid var(--line);background:var(--card);font-size:13px;line-height:1.5;z-index:1}.dt p{margin:3px 0}.dt span{color:var(--mut)}
+.c{position:sticky;left:290px;z-index:2;width:128px;flex:none;display:flex;align-items:center;gap:4px;padding:0 6px;background:var(--card);border-right:1px solid var(--line);font-size:12px}
+.p .c{background:color-mix(in srgb,var(--line) 60%,var(--card))}
+.c select{font:inherit;font-size:12px;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:4px;max-width:70px}
+.fl{border:1px solid var(--line);background:var(--card);color:var(--mut);border-radius:4px;cursor:pointer;padding:0 6px;font-size:13px}
+.fl.on{background:#dc2626;color:#fff;border-color:#dc2626}
+.rd .n{color:#dc2626;font-weight:600}
+.cap{padding:0 16px 24px;max-width:1300px;margin:auto;color:var(--mut);font-size:13px}
+.cap b{color:var(--fg)}
+
+[hidden]{display:none!important}
+.ed .c{width:176px}
+.c button{line-height:1.3}
+dialog{border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--fg);width:min(92vw,480px);padding:16px}
+dialog::backdrop{background:rgba(0,0,0,.45)}
+dialog h3{margin:0 0 8px;font:700 17px Georgia,serif}
+dialog label{display:block;margin:8px 0 2px;color:var(--mut);font-size:12px}
+dialog input:not([type=checkbox]),dialog select,dialog textarea{width:100%;font:inherit;padding:6px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--fg)}
+dialog .ck{display:inline-flex;align-items:center;gap:4px;margin:6px 10px 0 0;color:var(--fg);font-size:13px}
+.ab{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+a.chip{text-decoration:none}
+</style></head><body>
+<header><h1 id="ttl">Gantt</h1><p class="s" id="sub"></p></header>
+<div class="bar" id="chips"></div>
+<div class="bar"><button class="chip" id="all">Expandir todo</button><button class="chip" id="none">Contraer todo</button><button class="chip" id="urg">Solo urgentes</button></div>
+<div class="bar" id="edbar" hidden><button class="chip" id="addA">＋ Actividad</button><button class="chip" id="cp">Copiar JSON</button><button class="chip" id="dw">Descargar tareas.json</button><a class="chip" id="gh" target="_blank" rel="noopener" hidden>Abrir tareas.json en GitHub</a></div>
+<div class="cap" id="tot"></div><div class="cap" id="note"></div>
+<div class="wrap"><div class="g" id="g"></div></div>
+<div class="cap"><b>Línea rosa</b> = hoy (se mueve sola). <b>Zona beige</b> = vacaciones. <b>Rojo</b> = urgente (⚑) o atrasada (pasó su fecha sin llegar a 100 %). La parte intensa de cada barra es el avance registrado en <b>tareas.json</b>.</div>
+<dialog id="dlg"></dialog>
+<script>
+let D,base,NW,OV="",T=new Date();const ED=/[?&]editar/.test(location.search);let dirty=false,urgOnly=false;
+const open=new Set(),flt=new Set(),$=id=>document.getElementById(id),day=864e5,W=30;
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const P=s=>{const a=s.split("-");return new Date(+a[0],a[1]-1,+a[2])},iso=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const X=d=>(d-base)/day/7*W,fmt=d=>d.toLocaleDateString("es",{day:"numeric",month:"short"});
+const len=s=>(P(s.fin)-P(s.inicio))/day+1,av=s=>s.avance||0;
+const rng=a=>{const ss=a.subtareas||[];return ss.length?[new Date(Math.min(...ss.map(s=>+P(s.inicio)))),new Date(Math.max(...ss.map(s=>+P(s.fin))))]:[T,new Date(+T+4*day)]};
+const pa=a=>{let x=0,l=0;(a.subtareas||[]).forEach(s=>{x+=av(s)*len(s);l+=len(s)});return l?x/l/100:0};
+const rojo=s=>av(s)>=100?"":s.urgente?"urgente":(T>=new Date(+P(s.fin)+day)?"atrasada":"");
+const uni=a=>[...new Set((a.subtareas||[]).flatMap(s=>[...s.equipo]))].join("");
+const col=k=>(D.equipo[k]||{}).color||"#888",nom=k=>(D.equipo[k]||{}).nombre||k;
+const bg=o=>{const c=[...o].map(col);if(c.length<2)return c[0]||"#888";const s=100/c.length;return"linear-gradient(90deg,"+c.map((x,i)=>x+" "+i*s+"% "+(i+1)*s+"%").join(",")+")"};
+const dots=o=>[...o].map(k=>`<b style="background:${col(k)}" title="${esc(nom(k))}">${esc(nom(k)[0])}</b>`).join("");
+function head(){let m="",w="",pm=-1;for(let i=0;i<NW;i++){const d=new Date(+base+i*7*day);if(d.getMonth()!=pm){pm=d.getMonth();m+=`<div class="mo" style="left:${i*W}px">${d.toLocaleDateString("es",{month:"short",year:"2-digit"})}</div>`}w+=`<div class="wk" style="left:${i*W}px">${d.getDate()}</div>`}
+const ms=(D.hitos||[]).map((x,i)=>{const l=X(P(x.fecha));return`<span class="m ${i%2?"lo":""}" style="left:${l}px" title="${esc(x.fecha)}">${esc(x.texto)}</span><i class="d" style="left:${l}px;${i%2?"":"top:20px"}"></i>`}).join("");
+return`<div class="r h"><div class="n">Actividad</div><div class="c">Avance</div><div class="o">Equipo</div><div class="t" style="width:${NW*W}px">${m}${w}</div></div><div class="r" style="height:34px"><div class="n">Hitos del calendario</div><div class="c"></div><div class="o"></div><div class="t" style="height:34px;width:${NW*W}px">${OV}${ms}</div></div>`}
+function row(cls,n,s,e,o,pr,red,ai,si){const p=cls=="p",pc=Math.round(pr*100),sub=p?null:D.actividades[ai].subtareas[si];
+const dim=(flt.size&&![...flt].some(k=>o.includes(k)))||(urgOnly&&!red);
+let ctl=`<span>${pc} %</span>`;
+if(ED&&p)ctl+=`<button class="fl" data-ea="${ai}" title="Editar actividad">✎</button><button class="fl" data-as="${ai}" title="Agregar subtarea">＋</button>`;
+if(ED&&!p)ctl=`<select data-k="${ai}-${si}" aria-label="Avance">${[0,25,50,75,100].map(v=>`<option value="${v}" ${v==pc?"selected":""}>${v} %</option>`).join("")}</select><button class="fl ${sub.urgente?"on":""}" data-f="${ai}-${si}" title="Marcar urgente">⚑</button><button class="fl" data-es="${ai}-${si}" title="Editar">✎</button>`;
+return`<div class="r ${cls}${red?" rd":""}" style="${dim?"opacity:.22":""}" ${p?`data-i="${ai}" tabindex="0" role="button"`:""}><div class="n" title="${esc(n)}">${p?(open.has(ai)?"▾ ":"▸ ")+(ai+1)+". ":""}${esc(n)}${red?" · "+red:""}</div><div class="c">${ctl}</div><div class="o">${dots(o)}</div><div class="t" style="width:${NW*W}px">${OV}<i class="bb" style="left:${X(s)+2}px;width:${Math.max(6,X(+e+day)-X(s)-4)}px;${p?"":"background:"+(red?"#dc2626":bg(o))}" title="${pc} %"><u style="width:${(1-pr)*100}%"></u></i></div></div>`}
+function detail(i){const a=D.actividades[i],[r0,r1]=rng(a),ap=[...uni(a)].filter(k=>k!=a.responsable).map(nom).join(", ");
+return`<div class="dt"><p><b>Qué se hace.</b> ${esc(a.descripcion)}</p><p><b>Entregable.</b> ${esc(a.entregable)}</p><p><b>Fechas.</b> ${fmt(r0)} al ${fmt(r1)}</p><p><b>Avance registrado.</b> ${Math.round(pa(a)*100)} %</p><p><b>Responsable.</b> ${esc(nom(a.responsable))} <span>· Apoyo: ${esc(ap||"—")}</span></p><p><b>Depende de.</b> ${esc(a.depende)}</p><p><b>Consejo o riesgo.</b> ${esc(a.consejo)}</p></div>`}
+function draw(){OV=(D.vacaciones||[]).map(v=>`<i class="v" style="left:${X(P(v[0]))}px;width:${X(+P(v[1])+day)-X(P(v[0]))}px"></i>`).join("")+`<i class="td" style="left:${X(T)}px"></i>`;
+let h=head(),nu=0,tx=0,tl=0;const cnt={};
+D.actividades.forEach((a,i)=>{const ss=a.subtareas||[],rs=ss.map(rojo),rc=rs.filter(Boolean).length;nu+=rc;ss.forEach(s=>{tx+=av(s)*len(s);tl+=len(s);[...s.equipo].forEach(k=>cnt[k]=(cnt[k]||0)+1)});const[r0,r1]=rng(a);
+h+=row("p",a.nombre,r0,r1,uni(a),pa(a),rc?rc+" en rojo":"",i);
+if(open.has(i)){h+=detail(i);ss.forEach((s,j)=>{h+=row("s2",s.nombre,P(s.inicio),P(s.fin),s.equipo,av(s)/100,rs[j],i,j)})}});
+const g=$("g");g.className="g"+(ED?" ed":"");g.innerHTML=h;
+$("chips").innerHTML=Object.keys(D.equipo).map(k=>`<button class="chip ${flt.has(k)?"on":""}" data-m="${k}"><i style="background:${col(k)}"></i>${esc(nom(k))} · ${cnt[k]||0} tareas</button>`).join("");
+$("tot").textContent="Hoy: "+T.toLocaleDateString("es",{day:"numeric",month:"long",year:"numeric"})+" · avance del proyecto: "+Math.round(tl?tx/tl:0)+" % · pendientes en rojo: "+nu;
+$("urg").textContent=(urgOnly?"Ver todo":"Solo urgentes")+" ("+nu+")";
+$("note").textContent=ED?(dirty?"Tienes cambios sin subir. Copia o descarga el JSON y súbelo a GitHub.":"Modo edición: cambia avances, ⚑, fechas, personas, y agrega o quita tareas. Después copia el JSON y pégalo en GitHub."):""}
+function mark(){dirty=true;draw()}
+function dlg(html,ok,del){const d=$("dlg");d.innerHTML=html+`<div class="ab"><button class="chip" id="ok">Guardar</button><button class="chip" id="cn">Cancelar</button>${del?'<button class="chip" id="dl" style="color:#dc2626">Eliminar</button>':""}</div>`;d.showModal();
+$("ok").onclick=()=>{ok(d);d.close();mark()};$("cn").onclick=()=>d.close();if(del)$("dl").onclick=()=>{if(confirm("¿Eliminar? Esto se puede revertir en GitHub si no has subido el cambio."))del(),d.close(),mark()}}
+function eSub(i,j){const A=D.actividades[i],s=A.subtareas[j];
+dlg(`<h3>Subtarea</h3><label>Nombre<input id="f1" value="${esc(s.nombre)}"></label><label>Inicio<input id="f2" type="date" value="${s.inicio}"></label><label>Fin<input id="f3" type="date" value="${s.fin}"></label><label>Equipo</label><div>${Object.keys(D.equipo).map(k=>`<label class="ck"><input type="checkbox" value="${k}" ${s.equipo.includes(k)?"checked":""}>${esc(nom(k))}</label>`).join("")}</div><label>Avance</label><select id="f4">${[0,25,50,75,100].map(v=>`<option ${v==av(s)?"selected":""}>${v}</option>`).join("")}</select><label class="ck"><input id="f5" type="checkbox" ${s.urgente?"checked":""}>Urgente</label>`,
+d=>{s.nombre=$("f1").value;s.inicio=$("f2").value||s.inicio;s.fin=$("f3").value||s.fin;if(s.fin<s.inicio)s.fin=s.inicio;const eq=[...d.querySelectorAll("input[value]")].filter(x=>x.checked).map(x=>x.value).join("");s.equipo=eq||s.equipo;s.avance=+$("f4").value;s.urgente=$("f5").checked},()=>A.subtareas.splice(j,1))}
+function eAct(i){const a=D.actividades[i],f=(id,l,v)=>`<label>${l}<textarea id="${id}" rows="2">${esc(v)}</textarea></label>`;
+dlg(`<h3>Actividad</h3><label>Nombre<input id="g1" value="${esc(a.nombre)}"></label><label>Responsable<select id="g2">${Object.keys(D.equipo).map(k=>`<option value="${k}" ${k==a.responsable?"selected":""}>${esc(nom(k))}</option>`).join("")}</select></label>${f("g3","Qué se hace",a.descripcion)}${f("g4","Entregable",a.entregable)}${f("g5","Depende de",a.depende)}${f("g6","Consejo o riesgo",a.consejo)}`,
+()=>{a.nombre=$("g1").value;a.responsable=$("g2").value;a.descripcion=$("g3").value;a.entregable=$("g4").value;a.depende=$("g5").value;a.consejo=$("g6").value},()=>{D.actividades.splice(i,1);open.clear()})}
+const newSub=()=>({nombre:"Nueva subtarea",inicio:iso(T),fin:iso(new Date(+T+4*day)),equipo:Object.keys(D.equipo)[0],avance:0,urgente:false});
+function ghUrl(){const h=location.hostname,p=location.pathname.split("/")[1];if(h.endsWith(".github.io")&&p)return`https://github.com/${h.split(".")[0]}/${p}/edit/main/tareas.json`;return D.repositorio?`https://github.com/${D.repositorio}/edit/main/tareas.json`:""}
+function init(){base=P(D.inicio);let mx=+base+(D.semanas||30)*7*day;D.actividades.forEach(a=>(a.subtareas||[]).forEach(s=>mx=Math.max(mx,+P(s.fin))));NW=Math.ceil((mx-base)/day/7)+1;
+$("ttl").textContent=D.proyecto;$("sub").textContent="Proyecto Integrador · "+Object.keys(D.equipo).length+" integrantes · "+D.actividades.length+" actividades";
+const g=$("g");
+g.onclick=e=>{const b=e.target.closest("button");if(b){e.stopPropagation();const d=b.dataset;
+if(d.f){const[i,j]=d.f.split("-"),s=D.actividades[i].subtareas[j];s.urgente=!s.urgente;mark()}
+else if(d.es){const[i,j]=d.es.split("-");eSub(+i,+j)}else if(d.ea)eAct(+d.ea);
+else if(d.as){const A=D.actividades[+d.as];A.subtareas.push(newSub());open.add(+d.as);draw();eSub(+d.as,A.subtareas.length-1)}return}
+const r=e.target.closest(".p");if(r&&!e.target.closest("select")){const i=+r.dataset.i;open.has(i)?open.delete(i):open.add(i);draw()}};
+g.onchange=e=>{const s=e.target.closest("select[data-k]");if(s){const[i,j]=s.dataset.k.split("-");D.actividades[i].subtareas[j].avance=+s.value;mark()}};
+g.onkeydown=e=>{const r=e.target.closest&&e.target.closest(".p");if(r&&e.target==r&&(e.key=="Enter"||e.key==" ")){e.preventDefault();r.click()}};
+$("chips").onclick=e=>{const b=e.target.closest("[data-m]");if(b){const k=b.dataset.m;flt.has(k)?flt.delete(k):flt.add(k);draw()}};
+$("all").onclick=()=>{D.actividades.forEach((_,i)=>open.add(i));draw()};$("none").onclick=()=>{open.clear();draw()};$("urg").onclick=()=>{urgOnly=!urgOnly;draw()};
+if(ED){$("edbar").hidden=false;const u=ghUrl();if(u){$("gh").hidden=false;$("gh").href=u}
+$("addA").onclick=()=>{D.actividades.push({nombre:"Nueva actividad",responsable:Object.keys(D.equipo)[0],descripcion:"",entregable:"",depende:"",consejo:"",subtareas:[newSub()]});const i=D.actividades.length-1;open.add(i);draw();eAct(i)};
+const json=()=>JSON.stringify(D,null,2);
+$("cp").onclick=async()=>{try{await navigator.clipboard.writeText(json());$("note").textContent="JSON copiado. Pégalo en tareas.json en GitHub y haz Commit."}catch(e){$("note").textContent="No se pudo copiar. Usa Descargar."}};
+$("dw").onclick=()=>{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([json()],{type:"application/json"}));a.download="tareas.json";a.click()};
+window.onbeforeunload=e=>{if(dirty){e.preventDefault();return""}}}
+draw();$("g").parentElement.scrollLeft=Math.max(0,X(T)-250)}
+fetch("tareas.json",{cache:"no-store"}).then(r=>r.json()).then(j=>{D=j;init()}).catch(()=>{$("note").textContent="No se pudo leer tareas.json. Debe estar en la misma carpeta que index.html y abrirse desde GitHub Pages (no con doble clic)."});
+</script></body></html>
