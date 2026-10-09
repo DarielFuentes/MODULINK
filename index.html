@@ -65,6 +65,23 @@ dialog label{display:block;margin:8px 0 2px;color:var(--mut);font-size:12px}
 dialog input:not([type=checkbox]),dialog select,dialog textarea{width:100%;font:inherit;padding:6px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg)}
 dialog .ck{display:inline-flex;align-items:center;gap:4px;margin:6px 10px 0 0;color:var(--fg);font-size:13px}
 .ab{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.r.h{height:56px}.r.h .t{background:none}
+.mc{position:absolute;top:0;height:26px;padding:5px 8px;font-size:12px;font-weight:700;border-left:1px solid var(--line);border-bottom:1px solid var(--line);white-space:nowrap;overflow:hidden;background:var(--card)}
+.mc:nth-child(odd){background:var(--hov)}
+.wc{position:absolute;top:26px;height:30px;border-left:1px solid var(--line);text-align:center;font-size:10px;line-height:1.15;padding-top:4px;color:var(--mut)}
+.wc b{display:block;font-size:11px;color:var(--fg)}.nl .wc span{display:none}
+.hb{position:absolute;top:2px;transform:translateX(-50%);background:var(--today);color:#fff;font:700 10px/1 sans-serif;padding:3px 7px;border-radius:10px;z-index:3}
+.t{background:repeating-linear-gradient(90deg,transparent 0 calc(var(--w) - 1px),color-mix(in srgb,var(--line) 65%,transparent) calc(var(--w) - 1px) var(--w))}
+.mb{position:absolute;top:0;bottom:0;background:var(--hov);opacity:.75}
+.ml{position:absolute;top:0;bottom:0;width:1px;background:var(--mut);opacity:.35}
+.v{background:repeating-linear-gradient(135deg,var(--vac) 0 6px,transparent 6px 12px);opacity:.95}
+.hl{position:absolute;top:0;bottom:0;border-left:2px dashed;opacity:.45}
+.hp{position:absolute;transform:translateX(-50%);color:#fff;font:700 10px/1 sans-serif;padding:3px 7px;border-radius:10px;white-space:nowrap;z-index:2}
+.vl{position:absolute;top:13px;font-size:11px;color:var(--mut);font-style:italic}
+.td{z-index:2}
+.bb{top:9px;height:20px;border-radius:6px}.p .bb{top:13px;height:12px;border-radius:3px}.pl{top:11px}
+.p .t{background-color:color-mix(in srgb,var(--acc) 6%,transparent)}
+.r{border-bottom-color:color-mix(in srgb,var(--line) 65%,transparent)}
 </style></head><body>
 <header><h1 id="ttl">Gantt</h1><p class="s" id="sub"></p></header>
 <div class="cards" id="cards"></div>
@@ -73,10 +90,10 @@ dialog .ck{display:inline-flex;align-items:center;gap:4px;margin:6px 10px 0 0;co
 <div class="bar" id="edbar" hidden><button class="chip" id="addA">＋ Actividad</button><button class="chip" id="cp">Copiar JSON</button><button class="chip" id="dw">Descargar tareas.json</button><a class="chip" id="gh" target="_blank" rel="noopener" hidden>Abrir tareas.json en GitHub</a></div>
 <div class="cap" id="note"></div>
 <div class="wrap" id="wrap"><div class="g" id="g"></div></div>
-<div class="cap"><b>Línea rosa</b> = hoy. <b>Zona beige</b> = vacaciones. <b>Rojo</b> = urgente o atrasada. Punto de color: gris pendiente, azul en curso, verde hecha. Pasa el cursor sobre una barra para ver su detalle.</div>
+<div class="cap"><b>Línea rosa</b> = hoy. <b>Rayado</b> = vacaciones. Etiquetas: <b>E</b> entrega, <b>P</b> avance en Classroom, <b>Expo</b> Expomecatrónica, <b>Fin</b> cierre del cuatrimestre (las líneas punteadas las cruzan). <b>Rojo</b> = urgente o atrasada. Punto de color: gris pendiente, azul en curso, verde hecha. Pasa el cursor sobre una barra para ver su detalle.</div>
 <div class="tip" id="tip" hidden></div><dialog id="dlg"></dialog>
 <script>
-let D,base,NW,OV="",T=new Date(),W=30,QS="";const ED=/[?&]editar/.test(location.search);let dirty=false,urgOnly=false;
+let D,base,NW,OV="",T=new Date(),W=34,QS="";const ED=/[?&]editar/.test(location.search);let dirty=false,urgOnly=false;
 const open=new Set(),flt=new Set(),$=id=>document.getElementById(id),day=864e5;
 const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const P=s=>{const a=s.split("-");return new Date(+a[0],a[1]-1,+a[2])},iso=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
@@ -90,9 +107,19 @@ const uni=a=>[...new Set((a.subtareas||[]).flatMap(s=>[...s.equipo]))].join("");
 const col=k=>(D.equipo[k]||{}).color||"#888",nom=k=>(D.equipo[k]||{}).nombre||k;
 const bg=o=>{const c=[...o].map(col);if(c.length<2)return c[0]||"#888";const s=100/c.length;return"linear-gradient(90deg,"+c.map((x,i)=>x+" "+i*s+"% "+(i+1)*s+"%").join(",")+")"};
 const dots=o=>[...o].map(k=>`<b style="background:${col(k)}" title="${esc(nom(k))}">${esc(nom(k)[0])}</b>`).join("");
-function head(){let m="",w="",pm=-1;for(let i=0;i<NW;i++){const d=new Date(+base+i*7*day);if(d.getMonth()!=pm){pm=d.getMonth();m+=`<div class="mo" style="left:${i*W}px">${d.toLocaleDateString("es",{month:"short",year:"2-digit"})}</div>`}w+=`<div class="wk" style="left:${i*W}px">${d.getDate()}</div>`}
-const ms=(D.hitos||[]).map((x,i)=>{const l=X(P(x.fecha));return`<span class="m ${i%2?"lo":""}" style="left:${l}px" title="${esc(x.fecha)}">${esc(x.texto)}</span><i class="d" style="left:${l}px;${i%2?"":"top:22px"}"></i>`}).join("");
-return`<div class="r h"><div class="n">Actividad</div><div class="c">Avance</div><div class="o">Equipo</div><div class="t" style="width:${NW*W}px">${m}${w}</div></div><div class="r" style="height:38px"><div class="n">Hitos del calendario</div><div class="c"></div><div class="o"></div><div class="t" style="height:38px;width:${NW*W}px">${OV}${ms}</div></div>`}
+const MN=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+const hcol=s=>({E:"#0f766e",P:"#d97706",F:"#64748b"}[s[0]]||"#7c3aed");
+function mkOV(){let o="",d=new Date(base.getFullYear(),base.getMonth(),1),k=0;const e=new Date(+base+NW*7*day);
+while(d<e){const n=new Date(d.getFullYear(),d.getMonth()+1,1),a=Math.max(0,X(d)),b=Math.min(NW*W,X(n));if(k%2)o+=`<i class="mb" style="left:${a}px;width:${b-a}px"></i>`;o+=`<i class="ml" style="left:${a}px"></i>`;d=n;k++}
+o+=(D.vacaciones||[]).map(v=>`<i class="v" style="left:${X(P(v[0]))}px;width:${X(+P(v[1])+day)-X(P(v[0]))}px"></i>`).join("");
+o+=(D.hitos||[]).map(x=>`<i class="hl" style="left:${X(P(x.fecha))}px;border-color:${hcol(x.texto)}"></i>`).join("");
+return o+`<i class="td" style="left:${X(T)}px"></i>`}
+function head(){let m="",w="",d=new Date(base.getFullYear(),base.getMonth(),1);const e=new Date(+base+NW*7*day);
+while(d<e){const n=new Date(d.getFullYear(),d.getMonth()+1,1),a=Math.max(0,X(d)),b=Math.min(NW*W,X(n));m+=`<div class="mc" style="left:${a}px;width:${b-a}px">${b-a>110?MN[d.getMonth()]+" "+d.getFullYear():MN[d.getMonth()].slice(0,3)}</div>`;d=n}
+for(let i=0;i<NW;i++){const x=new Date(+base+i*7*day);w+=`<div class="wc" style="left:${i*W}px;width:${W}px"><b>S${i+1}</b><span>${x.getDate()}</span></div>`}
+const ms=(D.hitos||[]).map((x,i)=>`<span class="hp" style="left:${X(P(x.fecha))}px;top:${i%2?22:3}px;background:${hcol(x.texto)}" title="${esc(x.fecha)}">${esc(x.texto)}</span>`).join("");
+const vac=(D.vacaciones||[]).map(v=>`<span class="vl" style="left:${X(P(v[0]))+6}px">Vacaciones</span>`).join("");
+return`<div class="r h"><div class="n">Actividad</div><div class="c">Avance</div><div class="o">Equipo</div><div class="t" style="width:${NW*W}px">${m}${w}<span class="hb" style="left:${X(T)}px">HOY</span></div></div><div class="r" style="height:42px"><div class="n">Hitos del calendario</div><div class="c"></div><div class="o"></div><div class="t" style="height:42px;width:${NW*W}px">${OV}${ms}${vac}</div></div>`}
 function row(cls,n,s,e,o,pr,red,ai,si){const p=cls=="p",pc=Math.round(pr*100),A=D.actividades[ai],sub=p?null:A.subtareas[si],q=QS;
 const hit=!q||n.toLowerCase().includes(q)||(p&&(A.subtareas||[]).some(x=>x.nombre.toLowerCase().includes(q)));
 const dim=(flt.size&&![...flt].some(k=>o.includes(k)))||(urgOnly&&!red)||!hit;
@@ -104,7 +131,7 @@ const l=X(s)+2,w=Math.max(6,X(+e+day)-X(s)-4);
 return`<div class="r ${cls}${red?" rd":""}" style="${dim?"opacity:.2":""}" data-a="${ai}" data-s="${p?"":si}" ${p?`tabindex="0" role="button" aria-expanded="${open.has(ai)}"`:""}><div class="n">${dot}${p?(open.has(ai)?"▾ ":"▸ ")+(ai+1)+". ":""}${esc(n)}${red?" · "+red:""}</div><div class="c">${ctl}</div><div class="o">${dots(o)}</div><div class="t" style="width:${NW*W}px">${OV}<i class="bb" style="left:${l}px;width:${w}px;${p?"":"background:"+(red?"#dc2626":bg(o))}"><u style="width:${(1-pr)*100}%"></u></i><span class="pl" style="left:${l+w+5}px">${pc>=100?"✓":pc+" %"}</span></div></div>`}
 function detail(i){const a=D.actividades[i],[r0,r1]=rng(a),ap=[...uni(a)].filter(k=>k!=a.responsable).map(nom).join(", ");
 return`<div class="dt"><p><b>Qué se hace.</b> ${esc(a.descripcion)}</p><p><b>Entregable.</b> ${esc(a.entregable)}</p><p><b>Fechas.</b> ${fmt(r0)} al ${fmt(r1)} · <b>Avance.</b> ${Math.round(pa(a)*100)} %</p><p><b>Responsable.</b> ${esc(nom(a.responsable))} <span>· Apoyo: ${esc(ap||"—")}</span></p><p><b>Depende de.</b> ${esc(a.depende)}</p><p><b>Consejo o riesgo.</b> ${esc(a.consejo)}</p></div>`}
-function draw(){OV=(D.vacaciones||[]).map(v=>`<i class="v" style="left:${X(P(v[0]))}px;width:${X(+P(v[1])+day)-X(P(v[0]))}px"></i>`).join("")+`<i class="td" style="left:${X(T)}px"></i>`;
+function draw(){OV=mkOV();
 let h=head(),nu=0,tx=0,tl=0,nd=0,nt=0;const cnt={};
 D.actividades.forEach((a,i)=>{const ss=a.subtareas||[],rs=ss.map(rojo),rc=rs.filter(Boolean).length;nu+=rc;ss.forEach(s=>{tx+=av(s)*len(s);tl+=len(s);nt++;if(av(s)>=100)nd++;[...s.equipo].forEach(k=>cnt[k]=(cnt[k]||0)+1)});const[r0,r1]=rng(a);
 h+=row("p",a.nombre,r0,r1,uni(a),pa(a),rc?rc+" en rojo":"",i);
