@@ -83,7 +83,7 @@
           "inicio": "2026-09-07",
           "fin": "2026-09-11",
           "equipo": "DL",
-          "avance": 0,
+          "avance": 100,
           "urgente": false
         },
         {
@@ -91,7 +91,7 @@
           "inicio": "2026-09-07",
           "fin": "2026-09-18",
           "equipo": "EG",
-          "avance": 0,
+          "avance": 100,
           "urgente": false
         },
         {
@@ -99,7 +99,7 @@
           "inicio": "2026-09-07",
           "fin": "2026-09-25",
           "equipo": "DN",
-          "avance": 0,
+          "avance": 100,
           "urgente": false
         },
         {
@@ -107,7 +107,23 @@
           "inicio": "2026-09-14",
           "fin": "2026-09-25",
           "equipo": "NS",
-          "avance": 0,
+          "avance": 100,
+          "urgente": false
+        },
+        {
+          "nombre": "Nueva subtarea",
+          "inicio": "2026-10-08",
+          "fin": "2026-10-12",
+          "equipo": "D",
+          "avance": 100,
+          "urgente": false
+        },
+        {
+          "nombre": "Nueva subtarea",
+          "inicio": "2026-10-08",
+          "fin": "2026-10-12",
+          "equipo": "D",
+          "avance": 100,
           "urgente": false
         }
       ]
